@@ -1,16 +1,22 @@
-# it_way_bd_task
+# It Way BD - Flutter Post App
 
-A new Flutter project.
+A simple Flutter application that integrates with [JSONPlaceholder](https://jsonplaceholder.typicode.com/) API to fetch and add posts. The app allows users to view posts and create new ones in a clean and user-friendly interface.  
 
-## Getting Started
+## APK Download
 
-This project is a starting point for a Flutter application.
+You can download the APK and try the app on your device:
 
-A few resources to get you started if this is your first Flutter project:
+[ItWayBd.apk](https://github.com/siamsaleh/it-way-bd-task/blob/main/ItWayBd.apk)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Features
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Fetch posts from JSONPlaceholder API  
+- Add new posts  
+- Clean and intuitive UI  
+- Error handling included  
+
+## How to Run
+
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/siamsaleh/it-way-bd-task.git

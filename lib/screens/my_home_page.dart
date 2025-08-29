@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controller/main_controller.dart';
+import '../widgets/add_post_sheet.dart';
 import '../widgets/post_card_item.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -42,7 +43,17 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       }),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () {
+          final controller = Get.find<MainController>();
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+            ),
+            builder: (_) => AddPostSheet(controller: controller),
+          );
+        },
         backgroundColor: Colors.deepPurple,
         icon: const Icon(Icons.add, color: Colors.white),
         label: const Text("Add Post", style: TextStyle(color: Colors.white)),

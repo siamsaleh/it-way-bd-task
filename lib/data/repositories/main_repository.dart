@@ -27,4 +27,24 @@ class MainRepository {
       return ApiResult.failure(e.toString());
     }
   }
+
+  Future<ApiResult<PostModel>> createPost({required String title, required String body, required int userId}) async {
+    try {
+      final response = await apiService.post("/posts", data: {
+        "title": title,
+        "body": body,
+        "userId": userId,
+      });
+
+      if (response.statusCode == 201 || response.statusCode == 200) {
+        final post = PostModel.fromJson(response.data);
+        return ApiResult.success(post);
+      } else {
+        final error = ApiError.fromJson(response.data);
+        return ApiResult.failure(error.message ?? "Unknown error");
+      }
+    } catch (e) {
+      return ApiResult.failure(e.toString());
+    }
+  }
 }

@@ -26,4 +26,19 @@ class MainController extends GetxController {
       isLoading(false);
     }
   }
+
+  Future<void> addPost({required String title, required String body, required int userId}) async {
+    isLoading(true);
+    errorMessage('');
+    try {
+      final result = await postRepository.createPost(title: title, body: body, userId: userId);
+      if (result.isSuccess) {
+        posts.insert(0, result.data!); // add new post at top
+      } else {
+        errorMessage(result.error ?? "Failed to create post");
+      }
+    } finally {
+      isLoading(false);
+    }
+  }
 }

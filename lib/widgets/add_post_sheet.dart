@@ -2,16 +2,35 @@ import 'package:flutter/material.dart';
 
 import '../controller/main_controller.dart';
 
-class AddPostSheet extends StatelessWidget {
+class AddPostSheet extends StatefulWidget {
   const AddPostSheet({super.key, required this.controller});
 
   final MainController controller;
 
   @override
-  Widget build(BuildContext context) {
-    final titleController = TextEditingController();
-    final bodyController = TextEditingController();
+  State<AddPostSheet> createState() => _AddPostSheetState();
+}
 
+class _AddPostSheetState extends State<AddPostSheet> {
+  late final TextEditingController titleController;
+  late final TextEditingController bodyController;
+
+  @override
+  void initState() {
+    super.initState();
+    titleController = TextEditingController();
+    bodyController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    titleController.dispose();
+    bodyController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
       child: Container(
@@ -91,7 +110,7 @@ class AddPostSheet extends StatelessWidget {
                         if (title.isEmpty || body.isEmpty) return;
 
                         Navigator.of(context).pop();
-                        await controller.addPost(
+                        await widget.controller.addPost(
                             title: title, body: body, userId: 1);
                       },
                       child: const Text(
